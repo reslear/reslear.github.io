@@ -59,8 +59,11 @@ var seltooltip = (function() {
 		
 		mousedown : function( event ){
 			
-			//event.preventDefault();
-			tooltip.node.classList.add('hide');
+			if( event.target == tooltip.node ) { 
+				event.preventDefault();
+			} else {
+				tooltip.node.classList.add('hide');
+			}
 		},
 		
 		mouseup : function( event ) {
