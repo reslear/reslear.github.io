@@ -73,6 +73,7 @@ var seltooltip = (function() {
 			var attribute = parent.getAttribute('seltooltip');
 			
 			console.log(event.target,tooltip.node);
+console.log(event.target == tooltip.node);
 			if( !attribute || !SOURCE.hasOwnProperty(attribute) || !select.text().length || event.target == tooltip.node ){
 				return false;
 			}
