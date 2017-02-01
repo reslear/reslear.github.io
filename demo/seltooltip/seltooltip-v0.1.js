@@ -25,7 +25,40 @@ var seltooltip = (function() {
 	var SOURCE = {};
 	
 	var tooltip = {
+
 				
+		hasParent: function( node ) {
+			
+
+			var attribute = node.getAttribute('seltooltip');
+			
+			if( attribute ) {
+				return attribute;	
+			} else {
+				if( node.parentElement && node.tagName !== 'BODY' ) {
+					return tooltip.hasParent( node.parentElement );
+				}
+			}
+			
+			return false;
+		},
+		/*
+		hasParent: function( node ) {
+			
+
+			var attribute = node.getAttribute('seltooltip');
+			
+			if( attribute ) {
+				return attribute;	
+			} else {
+				if( node.parentElement && node.tagName !== 'BODY' ) {
+					return tooltip.hasParent( node.parentElement );
+				}
+			}
+			
+			return false;
+		},
+			*/	
 		create: function() {
 				
 			tooltip.node = document.createElement('div');
@@ -68,15 +101,18 @@ var seltooltip = (function() {
 		
 		mouseup : function( event ) {
 			
-			
-			var parent = select.range().commonAncestorContainer.parentElement;
-			var attribute = parent.getAttribute('seltooltip');
+
+			var parent = select.range().commonAncestorContainer;
+			var attribute = tooltip.hasParent( parent.nodeType === 3 ? parent.parentNode : parent );
 			
 			//console.log( !attribute || !SOURCE.hasOwnProperty(attribute) || !select.text().length || event.target == tooltip.node )
 			/*
 			console.log(event.target,tooltip.node);
 console.log(event.target == tooltip.node);
 			*/
+			//console.log(event.target,parent);
+			
+			
 			if( !attribute || !SOURCE.hasOwnProperty(attribute) || !select.text().length || event.target == tooltip.node ){
 				return false;
 			}
