@@ -58,12 +58,8 @@ var seltooltip = (function() {
 	var documentEvents = {
 		
 		mousedown : function( event ){
-			
-			if( event.target == tooltip.node ) { 
-				event.preventDefault();
-			} else {
-				tooltip.node.classList.add('hide');
-			}
+
+			tooltip.node.classList.add('hide');
 		},
 		
 		mouseup : function( event ) {
@@ -72,11 +68,12 @@ var seltooltip = (function() {
 			var parent = select.range().commonAncestorContainer.parentElement;
 			var attribute = parent.getAttribute('seltooltip');
 			
-			console.log(event.target,tooltip.node);
-console.log(event.target == tooltip.node);
+
 			if( !attribute || !SOURCE.hasOwnProperty(attribute) || !select.text().length || event.target == tooltip.node ){
 				return false;
 			}
+			
+			event.preventDefault();
 			
 			// add html
 			var source = SOURCE[attribute];
