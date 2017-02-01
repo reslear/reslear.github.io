@@ -30,7 +30,7 @@ var seltooltip = (function() {
 				
 			tooltip.node = document.createElement('div');
 			tooltip.node.className = 'seltooltip hide';
-
+			
 			document.body.appendChild( tooltip.node );
 		}
 	};
@@ -72,6 +72,7 @@ var seltooltip = (function() {
 			var parent = select.range().commonAncestorContainer.parentElement;
 			var attribute = parent.getAttribute('seltooltip');
 			
+			console.log(event.target,tooltip.node);
 			if( !attribute || !SOURCE.hasOwnProperty(attribute) || !select.text().length || event.target == tooltip.node ){
 				return false;
 			}
