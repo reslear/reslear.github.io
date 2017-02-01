@@ -61,7 +61,6 @@ var seltooltip = (function() {
 			
 			if( event.target == tooltip.node ) { 
 				event.preventDefault();
-				console.log('prevent!')
 			} else {
 				tooltip.node.classList.add('hide');
 			}
