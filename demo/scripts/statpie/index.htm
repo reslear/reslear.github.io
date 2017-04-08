@@ -21,9 +21,18 @@ var stat = new uStatPie();
 
 var links = document.querySelectorAll('.sz > a');
 
+function removeAct() {
+    [].forEach.call(links, function(link) {
+        link.classList.remove('act');
+    });
+}
+
 [].forEach.call(links, function(link) {
     var arr = link.innerHTML.split('/');
     link.onclick = function() {
+        removeAct();
+
+        link.classList.add('act');
         stat.update(arr[0],arr[1]);
     }
 });
