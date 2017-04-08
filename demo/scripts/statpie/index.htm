@@ -4,7 +4,7 @@
         <div class="tOnline" id="onl1">Онлайн всего: <b>1</b></div> <div class="gOnline" id="onl2">Гостей: <b>3</b></div> <div class="uOnline" id="onl3">Пользователей: <b>1</b></div>
     </div>
 
-    <div class="aaa">
+    <div class="sz">
         <a href="javascript://">312/34</a>
         <a href="javascript://">31/3</a>
         <a href="javascript://">72/72</a>
@@ -19,7 +19,7 @@
 <script>
 var stat = new uStatPie();
 
-var links = document.querySelectorAll('.aaa > a');
+var links = document.querySelectorAll('.sz > a');
 
 [].forEach.call(links, function(link) {
     var arr = link.innerHTML.split('/');
@@ -36,6 +36,10 @@ var links = document.querySelectorAll('.aaa > a');
 <style>
 html{ font-family: Rounded,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol" ;font-kerning: none;}
 body{padding: 20px}
-.aaa{}
-a{text-decoration:none}
+.aaa{padding-top:20px}
+.sz a{text-decoration:none;color:gray;padding-right:20px;font-size: 16px;  transition: all .5s ease;}
+.sz a:hover{text-decoration:underline}
+.sz a:focus{color:#1857F2}
+.sz a:focus:before{content:'🠆 ';color:#1857F2}
+.sz a:last-child{padding:0;}
 </style>
